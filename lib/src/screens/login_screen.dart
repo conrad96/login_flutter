@@ -7,16 +7,23 @@ class LoginScreen extends StatefulWidget{
 }
 
 class LoginScreenState extends State<LoginScreen>{
+  final formKey = GlobalKey<FormState>();
 
   Widget build(context){
     return Container(
-      margin: EdgeInsets.all(15.0),
+      margin: EdgeInsets.only(
+        top: 75.0,
+        left:15.0,
+        right:15.0
+      ),
       child: Form(
+        key: formKey,
         child: Column(
           children: [
             emailField(),
             passwordField(),
-           // submitButton(),
+            Container(margin: EdgeInsets.only(top:20.0)),
+            submitButton(),
           ],
         ),
       ),
@@ -27,7 +34,7 @@ class LoginScreenState extends State<LoginScreen>{
     return TextField(
        keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: "Email Address",
+        labelText: "Email Addres",
         hintText: "john.doe@example.com",
 
       ),
@@ -41,14 +48,22 @@ class LoginScreenState extends State<LoginScreen>{
     );
   }
   Widget passwordField(){
-    return TextField(
-      obscureText: true,
-      decoration: InputDecoration(
+    return Container(
+        child: TextField(
+        obscureText: true,
+        decoration: InputDecoration(
         labelText: "Password",
+          ),
       ),
     );
   }
   Widget submitButton(){
-
+    return RaisedButton(
+      color:  Colors.lightBlue,
+      onPressed: (){
+        formKey.currentState.reset();
+      },
+      child: Text("Submit"),
+    );
   }
 }

@@ -32,7 +32,7 @@ class LoginScreenState extends State<LoginScreen> with ValidationMixin {
   }
 
   Widget emailField(){
-    return TextField(
+    return TextFormField(
        keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: "Email Address",
@@ -41,7 +41,7 @@ class LoginScreenState extends State<LoginScreen> with ValidationMixin {
       ),
       validator: validateEmail,
       onSaved: (String value){
-        email= value;
+        email = value;
       },
     );
   
@@ -49,14 +49,14 @@ class LoginScreenState extends State<LoginScreen> with ValidationMixin {
 
   Widget passwordField(){
     return Container(
-        child: TextField(
+        child: TextFormField(
         obscureText: true,
         decoration: InputDecoration(
         labelText: "Password",
           ),
           validator: validatePassword,
       onSaved: (String val){
-        password=val;
+        password = val;
       }          
       ),
 

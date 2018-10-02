@@ -6,15 +6,7 @@ _LoginLayoutState createState() => _LoginLayoutState();
 
 class _LoginLayoutState extends State<LoginLayout>{
   Widget build(context){
-    //custom logo
-    final logo = Hero(
-      tag: 'Hero',
-      child: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        radius: 50.0,
-        child: Image.asset('assets/logo.jpg'),
-      ),
-    );
+    
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -42,7 +34,7 @@ class _LoginLayoutState extends State<LoginLayout>{
         shadowColor: Colors.lightBlueAccent.shade100,
         elevation: 5.0,
         child: MaterialButton(
-          minWidth: 200.0,
+          minWidth: 150.0,
           height: 42.0,
           onPressed: (){
 
@@ -66,7 +58,9 @@ class _LoginLayoutState extends State<LoginLayout>{
           shrinkWrap: true,
           padding: EdgeInsets.only(left:15.0,right:15.0),
           children: <Widget>[
-            logo,
+            Icon(
+              Icons.adb, color: Colors.green,size: 95.0,
+            ),
             SizedBox(height: 25.0),
             email,
             SizedBox(height: 10.0),

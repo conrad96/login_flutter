@@ -10,15 +10,13 @@ class _LoginLayoutState extends State<LoginLayout>{
     final logo = Hero(
       tag: 'Hero',
       child: CircleAvatar(
-        backgroundColor: Colors.lime,
+        backgroundColor: Colors.transparent,
         radius: 50.0,
-        child: Image.asset('assets/images/logo_2.png'),
+        child: Image.asset('assets/logo.jpg'),
       ),
     );
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
-      autofocus: false,
-      initialValue: 'conrad.mugisha@gmail.com',
       decoration: InputDecoration(
         hintText: "Email",
         labelText: "Email Address",
@@ -69,13 +67,13 @@ class _LoginLayoutState extends State<LoginLayout>{
           padding: EdgeInsets.only(left:15.0,right:15.0),
           children: <Widget>[
             logo,
-            SizedBox(height: 35.0),
+            SizedBox(height: 25.0),
             email,
             SizedBox(height: 10.0),
             password,
-            SizedBox(height: 10.0),
+            SizedBox(height: 5.0),
             forgotLabel,
-            SizedBox(height: 10.0),
+            SizedBox(height: 8.0),
             loginBtn
           ]
         )

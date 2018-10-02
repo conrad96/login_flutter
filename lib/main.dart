@@ -11,6 +11,9 @@ class Scratch extends StatefulWidget{
     }
 }
 class ScratchState extends State<Scratch>{
+  final myKey = GlobalKey<FormState>();
+   String EmailStr="";
+   String PasswordStr ="";
   Widget build(BuildContext context)
   {
     return MaterialApp(
@@ -18,26 +21,33 @@ class ScratchState extends State<Scratch>{
         appBar: AppBar(
           title: Text("Login System"),
         ),
-        body: Text("Test"),
+        body: loginLayout(),
       ),
     );
   }
   Widget loginLayout(){
+
     return Form(
-      child: Column(
-        children: <Widget>[
+      key: myKey,
+      child: Container(
+        margin: EdgeInsets.all(15.0),
+        child: Column(
+          children: <Widget>[
             email(),
-            password(),
+            password(), 
+            Container(margin: EdgeInsets.only(top: 10.0)),           
             submitButton()
-        ]
-      ),
+            ]
+        )
+      )
     );
   }
-  email(){
+   email(){
     return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         hintText: "john.doe@example.com",
-        labelText: "Email",
+        labelText: "Email",        
       ),
       validator: (String arg){
         if(!arg.contains('@'))
@@ -45,18 +55,25 @@ class ScratchState extends State<Scratch>{
           return "Email Invalid. please try again";
         }
       },
+      onSaved: (String arg){
+        EmailStr = arg;
+      },
     );
   }
   password(){
     return TextFormField(
       decoration:  InputDecoration(
-        labelText: "Password"
+        labelText: "Password",
       ),
+      obscureText: true,
       validator: (String arg){
         if(arg.length < 5)
         {
           return "password must me more than 5 characters";
         }
+      },
+      onSaved: (String arg){
+        PasswordStr = arg;
       },
     );
   }
@@ -65,7 +82,13 @@ class ScratchState extends State<Scratch>{
       splashColor: Colors.teal,
       elevation: 5.0,
       child: Text("Login"),
-      onPressed: (){},
+      onPressed: (){
+        if(myKey.currentState.validate())
+        {
+          myKey.currentState.save();
+          print("EMail: $EmailStr \n Password: $PasswordStr ");
+        }
+      },
     );
   }
 }
